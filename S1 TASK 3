@@ -1,0 +1,54 @@
+var student = "mohammad";
+var attend = 91;
+var quiz = 78;
+var exam = 84;
+var project = 95;
+var fees = "paid";
+
+var minimumAttend = 75;
+
+if (fees == "paid") {
+
+    var finalResult = (quiz * 30 / 100) + (exam * 50 / 100) + (project * 20 / 100);
+
+    var grade;
+
+    if (finalResult < 60) {
+        grade = "F";
+    } else if (finalResult < 70) {
+        grade = "D";
+    } else if (finalResult < 80) {
+        grade = "C";
+    } else if (finalResult < 90) {
+        grade = "B";
+    } else {
+        grade = "A";
+    }
+
+    var state;
+
+    if (attend >= minimumAttend) {
+        if (finalResult >= 60) {
+            state = "Pass";
+        } else {
+            state = "Fail";
+        }
+    } else {
+        state = "Fail";
+        grade = "F";
+    }
+
+    console.log("==========");
+    console.log("Student Name : " + student);
+    console.log("Attendance : " + attend + "%");
+    console.log("Quiz : " + quiz);
+    console.log("Final Exam : " + exam);
+    console.log("Project : " + project);
+    console.log("Average : " + finalResult.toFixed(2));
+    console.log("Grade : " + grade);
+    console.log("Status : " + state);
+    console.log("==========");
+
+} else {
+    console.log("You must pay the tuition fees first.");
+}
