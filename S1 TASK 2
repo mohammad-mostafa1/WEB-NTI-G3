@@ -1,0 +1,63 @@
+var customer = "Mohamed";
+var productType = "clothing";
+var itemPrice = 180;
+var items = 4;
+var discountCode = "SAVE20";
+var paymentMethod = "card";
+
+var totalPrice = itemPrice * items;
+
+var firstDiscount = 0;
+
+if (productType == "clothing") {
+    firstDiscount = totalPrice * 5 / 100;
+} else if (productType == "electronics") {
+    firstDiscount = totalPrice * 10 / 100;
+} else {
+    firstDiscount = 0;
+}
+
+var priceAfterCategory = totalPrice - firstDiscount;
+
+var secondDiscount = 0;
+var message;
+
+if (discountCode == "") {
+    message = "No coupon applied";
+} else if (discountCode == "SAVE20") {
+    secondDiscount = priceAfterCategory * 20 / 100;
+    message = "Coupon SAVE20 applied";
+} else if (discountCode == "SAVE10") {
+    secondDiscount = priceAfterCategory * 10 / 100;
+    message = "Coupon SAVE10 applied";
+} else {
+    message = "Invalid coupon code";
+}
+
+var priceAfterCoupon = priceAfterCategory - secondDiscount;
+
+var lastDiscount = 0;
+
+if (paymentMethod == "card") {
+    lastDiscount = priceAfterCoupon * 2 / 100;
+} else if (paymentMethod == "wallet") {
+    lastDiscount = priceAfterCoupon * 5 / 100;
+}
+
+var finalPrice = priceAfterCoupon - lastDiscount;
+
+var tax = finalPrice * 14 / 100;
+var amountToPay = finalPrice + tax;
+
+console.log(" PURCHASE RECEIPT ");
+console.log("Customer Name : " + customer);
+console.log("Product Type : " + productType);
+console.log("Item Price : " + itemPrice);
+console.log("Items : " + items);
+console.log("Original Total : " + totalPrice.toFixed(2));
+console.log("Category Discount : -" + firstDiscount.toFixed(2));
+console.log(message);
+console.log("Coupon Discount : -" + secondDiscount.toFixed(2));
+console.log("Payment Discount : -" + lastDiscount.toFixed(2));
+console.log("VAT : +" + tax.toFixed(2));
+console.log("Amount Due : " + amountToPay.toFixed(2));
